@@ -10,12 +10,14 @@ const jwtSecret = "your_secret_key";
 
 app.use(express.json());
 // Route for user authentication
-app.post("/login", (req, res) => {
-  console.log(req.body);
-  const { username, password } = req.body;
 
+const getJwtToken = (req, res, next) => {
   // Get the users object from the JSON database
   const users = router.db.get("users").value();
+
+  console.log(req.headers)
+
+  const { username, password } = req.body;
 
   // Check if the user exists and the password is correct
   if (users[username] && users[username].password === password) {
@@ -27,11 +29,12 @@ app.post("/login", (req, res) => {
   } else {
     res.status(401).send("Invalid credentials");
   }
-});
+};
 
 // Middleware function to authenticate requests
 const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
+
 
   if (!authHeader) {
     res.status(401).send("Unauthorized");
@@ -46,6 +49,9 @@ const authenticate = (req, res, next) => {
     }
   }
 };
+
+
+server.use('/login', getJwtToken)
 
 // Add the authentication middleware to the JSON server
 server.use(authenticate);
