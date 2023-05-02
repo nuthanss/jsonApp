@@ -2,18 +2,21 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "Post 1",
+      "content": "Lorem ipsum dolor sit amet"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "Post 2",
+      "content": "Consectetur adipiscing elit"
     }
   ],
-  "profile": {
-    "name": "typicode"
+  "users": {
+    "nuthan": {
+      "password": "pass123"
+    },
+    "user2": {
+      "password": "password2"
+    }
   }
 }
