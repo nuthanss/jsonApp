@@ -12,9 +12,6 @@
     }
   ],
   "users": {
-    "nuthan": {
-      "password": "pass123"
-    },
     "user2": {
       "password": "password2"
     }
